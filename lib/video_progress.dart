@@ -1,26 +1,18 @@
 // ignore_for_file: no_logic_in_create_state, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:flutter_state_managment/Videoprogress.dart';
+import 'package:provider/provider.dart';
 
-late _VideoprogressState stateofvideoprogress;
-
-class Videoprogress extends StatefulWidget {
+class Videoprogress extends StatelessWidget {
   const Videoprogress({Key? key}) : super(key: key);
 
   @override
-  State<Videoprogress> createState() {
-    stateofvideoprogress = _VideoprogressState();
-    return stateofvideoprogress;
-  }
-}
-
-class _VideoprogressState extends State<Videoprogress> {
-  var progress = 10.00;
-  @override
   Widget build(BuildContext context) {
+    final _progress = Provider.of<Progressvalue>(context).progress * 100;
     return Center(
       child: Text(
-        "Video Progress \n${progress.toStringAsFixed(2)}%",
+        "Video Progress \n${_progress.toStringAsFixed(2)}%",
         textAlign: TextAlign.center,
         style: const TextStyle(
           fontSize: 30,
